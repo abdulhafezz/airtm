@@ -1,0 +1,358 @@
+/* popup.css - AIRTM CASHIER Advanced Edition */
+
+:root {
+    --primary-color: #4e30d8;
+    --primary-hover: #3a23a5;
+    --secondary-color: #30d84e;
+    --secondary-hover: #23a53a;
+    --text-color: #333;
+    --text-light: #666;
+    --bg-color: #f9f9f9;
+    --card-bg: #fff;
+    --border-color: #e0e0e0;
+    --success-color: #4CAF50;
+    --error-color: #F44336;
+    --warning-color: #FF9800;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    width: 450px;
+    max-height: 650px;
+    overflow-y: auto;
+}
+
+.container {
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+h1 {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+h2 {
+    font-size: 18px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#status-text {
+    font-weight: 500;
+}
+
+#status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #888;
+    transition: var(--transition);
+}
+
+#status-dot.active {
+    background-color: var(--success-color);
+    box-shadow: 0 0 5px var(--success-color);
+}
+
+.p2p-rate-container, .payment-methods-container {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.p2p-rate-header, .payment-methods-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.p2p-rate-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 10px 0;
+}
+
+.p2p-rate-currency {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-left: 5px;
+}
+
+.p2p-rate-source, .payment-methods-source {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.p2p-rate-time, .payment-methods-time {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.payment-methods-table {
+    margin: 15px 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    font-weight: 600;
+    color: var(--text-color);
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+td {
+    color: var(--text-color);
+}
+
+.loading-text {
+    text-align: center;
+    color: var(--text-light);
+    padding: 20px;
+}
+
+.payment-method-row:hover {
+    background-color: rgba(78, 48, 216, 0.05);
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 14px;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn.secondary {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.btn.secondary:hover {
+    background-color: var(--border-color);
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.btn-icon:hover {
+    background-color: rgba(78, 48, 216, 0.1);
+}
+
+.settings-section {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(78, 48, 216, 0.2);
+}
+
+.form-group.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group.checkbox label {
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.test-result {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    display: none;
+}
+
+.test-result.success {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.test-result.error {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: var(--error-color);
+    border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-light);
+    font-size: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    body {
+        width: 100%;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #0000ff;
+        --primary-hover: #0000cc;
+        --secondary-color: #008000;
+        --secondary-hover: #006600;
+        --text-color: #000000;
+        --text-light: #333333;
+        --border-color: #666666;
+        --success-color: #008000;
+        --error-color: #cc0000;
+        --warning-color: #cc6600;
+    }
+    
+    .btn, input, .stat-box, .settings-section, .p2p-rate-container, .payment-methods-container {
+        border: 1px solid #000;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
