@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Airtm Monitor Pro</title>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="../images/icon48.png" alt="Logo" class="logo">
+            <h1>Airtm Monitor Pro</h1>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="settings">Settings</button>
+            <button class="tab-button" data-tab="status">Status</button>
+            <button class="tab-button" data-tab="diagnostics">Diagnostics</button>
+        </div>
+
+        <div id="settings" class="tab-content active">
+            <h2>Settings</h2>
+            <div class="form-group">
+                <label for="monitoringActive">Monitoring:</label>
+                <label class="switch">
+                    <input type="checkbox" id="monitoringActive">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <hr>
+            <h3>Telegram Configuration</h3>
+            <div class="form-group">
+                <label for="telegramToken">Bot Token:</label>
+                <input type="password" id="telegramToken" placeholder="Your Telegram Bot Token">
+            </div>
+            <div class="form-group">
+                <label for="telegramChatId">Chat ID:</label>
+                <input type="text" id="telegramChatId" placeholder="Your Telegram Chat ID">
+            </div>
+            <button id="testTelegram" class="button-secondary">Test Telegram</button>
+            <p id="telegramTestResult" class="test-result"></p>
+            <hr>
+            <h3>Transaction Filters</h3>
+            <div class="form-group">
+                <label for="minAmount">Min Amount (USD):</label>
+                <input type="number" id="minAmount" placeholder="e.g., 5" min="0">
+            </div>
+            <div class="form-group">
+                <label for="maxAmount">Max Amount (USD):</label>
+                <input type="number" id="maxAmount" placeholder="e.g., 100" min="0">
+            </div>
+            <div class="form-group">
+                <label for="paymentMethods">Preferred Payment Methods (comma-separated):</label>
+                <input type="text" id="paymentMethods" placeholder="e.g., Vodafone Cash, InstaPay">
+            </div>
+            <hr>
+            <h3>Exchange & Balance</h3>
+            <div class="form-group">
+                <label for="usdToEgpRate">USD to EGP Rate:</label>
+                <input type="number" id="usdToEgpRate" placeholder="e.g., 30.85" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="manualBalance">Current Balance (e.g., Voda Cash):</label>
+                <input type="number" id="manualBalance" placeholder="For auto-accept reference" min="0">
+            </div>
+            <hr>
+            <h3>Notification Preferences</h3>
+            <div class="form-group">
+                <label for="chromeNotifications">Chrome Notifications:</label>
+                <label class="switch">
+                    <input type="checkbox" id="chromeNotifications" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="telegramNotifications">Telegram Notifications:</label>
+                <label class="switch">
+                    <input type="checkbox" id="telegramNotifications" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <hr>
+            <h3>Auto Acceptance (Use with Caution!)</h3>
+            <div class="form-group">
+                <label for="autoAcceptEnabled">Enable Auto Accept:</label>
+                <label class="switch">
+                    <input type="checkbox" id="autoAcceptEnabled">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <p class="warning">Warning: Auto-acceptance is experimental. Use at your own risk.</p>
+            <button id="saveSettings" class="button-primary">Save Settings</button>
+            <p id="saveStatus" class="status-message"></p>
+            <hr>
+            <h3>Remote Acceptance (via External Bot Server)</h3>
+            <div class="form-group">
+                <label for="botServerUrl">Bot Command Server URL (optional):</label>
+                <input type="url" id="botServerUrl" placeholder="https://your-bot-server.com/get-commands">
+            </div>
+            <div class="form-group">
+                <label for="userIdForPolling">User/Device ID for Polling (optional):</label>
+                <input type="text" id="userIdForPolling" placeholder="Unique ID for your bot server">
+            </div>
+            <div class="form-group">
+                <label for="pollingInterval">Command Polling Interval (seconds, min 15):</label>
+                <input type="number" id="pollingInterval" placeholder="e.g., 30" min="15">
+            </div>
+            <p class="info">Info: These settings are for advanced users who have a server component for their Telegram bot to relay 'accept' commands back to this extension.</p>
+        </div>
+
+        <div id="status" class="tab-content">
+            <h2>Monitoring Status</h2>
+            <p>Status: <span id="monitoringStatusText">Inactive</span></p>
+            <p>Last Check: <span id="lastCheckTime">N/A</span></p>
+            <p>Offers Detected (Session): <span id="offersDetectedCount">0</span></p>
+            <button id="scanNow" class="button-primary">Scan Now</button>
+        </div>
+
+        <div id="diagnostics" class="tab-content">
+            <h2>Internal Diagnostics</h2>
+            <p>View recent logs and error messages.</p>
+            <textarea id="diagLogOutput" rows="10" readonly></textarea>
+            <button id="clearDiagLog" class="button-secondary">Clear Log</button>
+            <button id="exportDebugInfo" class="button-secondary">Export Debug Info</button>
+        </div>
+
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+/* popup/popup.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: #f4f7f6;
+    color: #333;
+    width: 380px;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.2em;
+    color: #34495e;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 1em;
+    color: #7f8c8d;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 0.95em;
+    color: #7f8c8d;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button.active {
+    color: #3498db;
+    border-bottom: 3px solid #3498db;
+    font-weight: bold;
+}
+
+.tab-button:hover {
+    color: #2980b9;
+}
+
+.tab-content {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #fff;
+    border-radius: 0 0 5px 5px;
+    animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label:not(.switch) {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95em;
+    width: calc(100% - 22px); /* Account for padding and border */
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+/* Basic Button Styling */
+.button-primary, .button-secondary {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 5px;
+}
+
+.button-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.button-primary:hover {
+    background-color: #2980b9;
+}
+
+.button-primary:active {
+    transform: translateY(1px);
+}
+
+.button-secondary {
+    background-color: #ecf0f1;
+    color: #34495e;
+    border: 1px solid #bdc3c7;
+}
+
+.button-secondary:hover {
+    background-color: #dadedf;
+}
+
+.button-secondary:active {
+    transform: translateY(1px);
+}
+
+
+/* Switch Toggle CSS */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px; /* Smaller switch */
+    height: 24px; /* Smaller switch */
+    align-self: flex-start; /* Align with labels if they are multiline */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; /* Smaller slider */
+    width: 18px;  /* Smaller slider */
+    left: 3px;    /* Adjusted position */
+    bottom: 3px;  /* Adjusted position */
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #28a745; /* Green for active */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #28a745;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px); /* Adjusted translation */
+}
+
+.slider.round {
+    border-radius: 24px; /* Adjusted for new height */
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.status-message, .test-result {
+    font-size: 0.85em;
+    margin-top: 8px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.status-message.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.test-result {
+    /* Similar styling can be applied based on test success/failure */
+}
+
+.warning {
+    font-size: 0.8em;
+    color: #856404;
+    background-color: #fff3cd;
+    padding: 8px;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#diagLogOutput {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: #2b2b2b;
+    color: #a9b7c6;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85em;
+}
